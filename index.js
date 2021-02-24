@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+require("dotenv").config();
 
 const postRoutes = require("./routes/posts");
 
@@ -11,8 +12,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/posts", postRoutes);
 
-const CONNECTION_URL =
-  "mongodb+srv://crudtest:crudtest@cluster0.914jm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const CONNECTION_URL = process.env.CONNECTION_URL;
 
 const PORT = process.env.PORT || "5000";
 
